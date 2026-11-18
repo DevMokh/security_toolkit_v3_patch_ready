@@ -1,0 +1,22 @@
+إصلاح فشل Android V1 Embedding
+
+مهم: الصورة التي أرسلها المستخدم ما زالت تعرض الـWorkflow القديم؛ لذلك هذه الملفات لم تُفعّل في GitHub بعد.
+
+مكان وضع الملفات:
+- ضع مجلد .github في جذر مستودع GitHub.
+- ضع مجلد scripts في جذر مشروع Flutter نفسه بجانب pubspec.yaml و lib.
+- لا تضع الملفات داخل مجلد إضافي متداخل.
+
+استبدل ملف الـWorkflow القديم الذي يُبنى منه APK بالملف:
+.github/workflows/build.yml
+
+بعد الحفظ والرفع، التشغيل الصحيح يجب أن يظهر قبل Get dependencies:
+1. Confirm Flutter project root
+2. Regenerate Android host project with V2 embedding
+3. Verify Android embedding before dependency/build steps
+
+ثم تظهر Resolve dependencies وAnalyze Dart source وRun tests وBuild release APK.
+
+إذا ظل التشغيل يعرض Get dependencies ثم Build APK مباشرة، فهذا يعني أن Workflow القديم ما زال موجودًا/مفعّلًا أو أن التعديلات لم تُرفع إلى الفرع الذي يتم بناؤه.
+
+لا يمكن تأكيد نجاح APK قبل رؤية تشغيل GitHub Actions الجديد يصل إلى Upload release APK.
